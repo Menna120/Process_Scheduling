@@ -17,7 +17,7 @@ def SRJF(processes):
         if current_process.response_time == -1:
             current_process.response_time = current_time - current_process.arrival_time
 
-        if not processes_sequence or processes_sequence[len(processes_sequence) - 1] != current_process.name:
+        if not processes_sequence or processes_sequence[-1] != current_process.name:
             processes_sequence.append(current_process.name)
             timeline_sequence.append(current_time)
 
