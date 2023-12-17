@@ -2,6 +2,7 @@ from prettytable import PrettyTable
 
 indent = "\t\t\t\t"
 
+
 def print_gantt_chart(processes_sequence, timeline_sequence, head_text, file):
     n = len(processes_sequence)
     head_padding = ' ' * int((n * 5 - len(head_text)) / 2)
@@ -11,6 +12,7 @@ def print_gantt_chart(processes_sequence, timeline_sequence, head_text, file):
     gantt_chart += f"{indent}|{' -- |' * n}\n"
     gantt_chart += f"{indent}{''.join(f'{e:<5}' for e in timeline_sequence)}\n\n"
     file.write(gantt_chart)
+
 
 def print_result(completed_processes, file):
     result = PrettyTable()
@@ -28,7 +30,8 @@ def print_result(completed_processes, file):
 
     file.write('\n'.join([indent + line for line in str(result).split('\n')]) + '\n\n')
 
-def print_all(completed_processes, processes_sequence, timeline_sequence, head_text, file):
+
+def output(completed_processes, processes_sequence, timeline_sequence, head_text, file):
     print_gantt_chart(processes_sequence, timeline_sequence, head_text, file)
     print_result(completed_processes, file)
-    file.write('-' * 80)
+    file.write('-' * 100)
